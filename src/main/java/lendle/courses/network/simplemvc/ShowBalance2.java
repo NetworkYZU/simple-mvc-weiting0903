@@ -33,19 +33,19 @@ public class ShowBalance2 extends HttpServlet {
             throws ServletException, IOException {
         String id=request.getParameter("id");
         BankCustomer customer=BankCustomer.getCustomer(id);
-        String address=null;
-        if(customer==null){
-            address="/WEB-INF/bank-account/UnknownCustomer.jsp";
-        }else if(customer.getBalance()<0){
-            address="/WEB-INF/bank-account/NegativeBalance.jsp";
-            request.setAttribute("customer", customer);
-        }else if(customer.getBalance()>10000){
-            address="/WEB-INF/bank-account/HighBalance.jsp";
-            request.setAttribute("customer", customer);
-        }else{
-            address="/WEB-INF/bank-account/NormalBalance.jsp";
-            request.setAttribute("customer", customer);
+        if(bankCustomer == null){
+            request.getRequestDispatcher("/WEB-INF/bank-account/UnknownCustomer.jsp").forward(request,response);
+        }else{            
+            request.setAttribute("customer", bankCustomer);
+            if(bankCustomer.getBalance()<0){
+                request.getRequestDispatcher("/WEB-INF/bank-account/NegativeBalance.jsp").forward(request,response);
+            }else if(bankCustomer.getBalance()>10000){
+                request.getRequestDispatcher("/WEB-INF/bank-account/HighBalance.jsp").forward(request,response);
+            }else{
+                request.getRequestDispatcher("/WEB-INF/bank-account/NormalBalance.jsp").forward(request,response);
+            }
         }
+       
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
