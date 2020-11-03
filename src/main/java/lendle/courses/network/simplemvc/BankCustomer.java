@@ -8,12 +8,12 @@ package lendle.courses.network.simplemvc;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
+/**Bean to represent a bank customer.
  *
- * @author lendle
+ * @author weiting
  */
 public class BankCustomer {
-
+    
     private String id, firstName, lastName;
     private double balance;
 
@@ -28,43 +28,35 @@ public class BankCustomer {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
     public String getFirstName() {
         return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
     }
 
     public String getLastName() {
         return lastName;
     }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
+    
     public double getBalance() {
         return balance;
     }
 
+    public double getBalanceNoSign() {
+        return Math.abs(balance);
+    }
     public void setBalance(double balance) {
         this.balance = balance;
     }
     
-    private static Map<String, BankCustomer> db=new HashMap<>();
-    static{
-        db.put("customer1", new BankCustomer("customer1", "name1", "name1", 10000));
-        db.put("customer2", new BankCustomer("customer2", "name2", "name2", 15000));
-        db.put("customer3", new BankCustomer("customer3", "name3", "name3", -1));
-        db.put("customer4", new BankCustomer("customer4", "name4", "name4", 8000));
+//Make a small table of banking customer.
+    private static HashMap customers;
+    static {
+        customers =new HashMap();
+        customers.put("id001",new BankCustomer("id001","John","Hacker",-3456.78));
+        customers.put("id002",new BankCustomer("id002","Jane","Hacker",1234.56));
+        customers.put("id003",new BankCustomer("id003","Juan","Hacker",987654.32));
     }
     
     public static BankCustomer getCustomer(String id){
-        return db.get(id);
+        return (BankCustomer)customers.get(id);
     }
 }

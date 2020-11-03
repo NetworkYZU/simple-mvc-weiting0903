@@ -32,7 +32,7 @@ public class ShowBalance2 extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String id=request.getParameter("id");
-        BankCustomer customer=BankCustomer.getCustomer(id);
+        BankCustomer bankCustomer=BankCustomer.getCustomer(id);
         if(bankCustomer == null){
             request.getRequestDispatcher("/WEB-INF/bank-account/UnknownCustomer.jsp").forward(request,response);
         }else{            
