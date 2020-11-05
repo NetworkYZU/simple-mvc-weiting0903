@@ -48,15 +48,15 @@ public class BankCustomer {
     }
     
 //Make a small table of banking customer.
-    private static HashMap customers;
+    private static Map<String, BankCustomer> db=new HashMap<>();
     static {
-        customers =new HashMap();
-        customers.put("id001",new BankCustomer("id001","John","Hacker",-3456.78));
-        customers.put("id002",new BankCustomer("id002","Jane","Hacker",1234.56));
-        customers.put("id003",new BankCustomer("id003","Juan","Hacker",987654.32));
+        db.put("customer1",new BankCustomer("customer1","name1","name1",10000));
+        db.put("customer2",new BankCustomer("customer2","name2","name2",15000));
+        db.put("customer3",new BankCustomer("customer3","name3","name3",-1));
+        db.put("customer4",new BankCustomer("customer4","name4","name4",8000));
     }
     
     public static BankCustomer getCustomer(String id){
-        return (BankCustomer)customers.get(id);
+        return db.get(id);
     }
 }

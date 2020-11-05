@@ -8,9 +8,9 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <form method="post" action="ShowBalance2">
+        <form method="post" action="score">
             Customer Id:<input type="text" name="id"/><br/>
             <input type="submit"/>
-        </form>
+        </form> 
     </body>
 </html>
